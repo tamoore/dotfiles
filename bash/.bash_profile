@@ -5,9 +5,7 @@
 
 declare -x GPG_TTY
 
-if [ -z "$GPG_TTY" ]; then
-    GPG_TTY=$(tty)
-fi
+GPG_TTY=$(tty)
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
