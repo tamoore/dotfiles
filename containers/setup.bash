@@ -11,5 +11,7 @@
 echo 'export GPG_TTY=$(tty)' >>"$HOME/.profile"
 
 mkdir -p "$HOME/.gnupg"
-echo 'pinentry-program /home/linuxbrew/.linuxbrew/bin/pinentry-tty' >"$HOME/.gnupg/gpg-agent.conf"
-echo 'pinentry-mode loopback' >>"$HOME/.gnupg/gpg-agent.conf"
+echo 'pinentry-program /usr/bin/pinentry-tty' >"$HOME/.gnupg/gpg-agent.conf"
+#echo 'allow-loopback-pinentry' >>"$HOME/.gnupg/gpg-agent.conf"
+#echo 'use-agent' >"$HOME/.gnupg/gpg.conf"
+#echo 'pinentry-mode loopback' >>"$HOME/.gnupg/gpg.conf"
