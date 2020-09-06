@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+declare WATCH_EXEC_VERSION="1.14.0"
+
 # Install homebrew for some packages that use homebrew instead of apt or some
 # other linux package manager
 if [ ! -x "$(command -v brew)" ]; then
@@ -16,3 +18,6 @@ echo 'PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>"$HOME/.profile"
 # work with them which will need to be looked at.
 mkdir -p "$HOME/.gnupg"
 echo 'pinentry-program /usr/bin/pinentry-tty' >"$HOME/.gnupg/gpg-agent.conf"
+
+# Download watch exec deb
+wget "https://github.com/watchexec/watchexec/releases/download/${WATCH_EXEC_VERSION}/watchexec-${WATCH_EXEC_VERSION}-x86_64-unknown-linux-gnu.deb" -O "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
