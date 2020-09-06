@@ -8,6 +8,7 @@ declare -a GNU_DEPS
 [ ! -x "$(command -v stow)" ] && GNU_DEPS+=('stow')
 [ ! -x "$(command -v git)" ] && GNU_DEPS+=('git')
 [ ! -x "$(command -v shellcheck)" ] && GNU_DEPS+=('shellcheck')
+[ ! -x "$(command -v socat)" ] && GNU_DEPS+=('socat')
 
 echo "==> Deps to install: ${GNU_DEPS[*]}"
 echo "==> Package installer: ${PKG_INSTALLER}"
