@@ -9,6 +9,8 @@ fi
 
 # shellcheck disable=SC2016
 echo 'export GPG_TTY=$(tty)' >>"$HOME/.profile"
+# shellcheck disable=SC2016
+echo 'PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>"$HOME/.profile"
 
 # Setup gpg to work with containers, although at the moment they don't actually
 # work with them which will need to be looked at.
