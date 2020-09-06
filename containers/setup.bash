@@ -8,4 +8,4 @@
 # fi
 
 # shellcheck disable=SC2016
-echo 'export GPG_TTY=$(tty)' >>/root/.profile
+echo 'export GPG_TTY=$(tty)' >>"$HOME/.profile"
