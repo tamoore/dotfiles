@@ -9,3 +9,6 @@
 
 # shellcheck disable=SC2016
 echo 'export GPG_TTY=$(tty)' >>"$HOME/.profile"
+
+mkdir -p "$HOME/.gnupg"
+echo 'pinentry-program /home/linuxbrew/.linuxbrew/bin/pinentry-tty' >"$HOME/.gnupg/gpg-agent.conf"
