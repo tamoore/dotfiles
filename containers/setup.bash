@@ -21,3 +21,6 @@ echo 'pinentry-program /usr/bin/pinentry-tty' >"$HOME/.gnupg/gpg-agent.conf"
 
 # Download watch exec deb
 wget "https://github.com/watchexec/watchexec/releases/download/${WATCH_EXEC_VERSION}/watchexec-${WATCH_EXEC_VERSION}-x86_64-unknown-linux-gnu.deb" -O "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
+
+# Install
+sudo apt install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
