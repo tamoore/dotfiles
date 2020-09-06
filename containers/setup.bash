@@ -7,4 +7,5 @@ if [ ! -x "$(command -v brew)" ]; then
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-echo "export GPG_TTY=$(tty)" >>/root/.profile
+# shellcheck disable=SC2016
+echo 'export GPG_TTY=$(tty)' >>/root/.profile
