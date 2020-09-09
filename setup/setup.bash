@@ -22,12 +22,3 @@ for dep in "${GNU_DEPS[@]}"; do
   sudo apt install -y "${dep}"
   echo -e "\u001b[32m==> Installed ${dep}\u001b[0m"
 done
-
-# Install homebrew for some packages that use homebrew instead of apt or some
-# other linux package manager
-if [ ! -x "$(command -v brew)" ]; then
-  if [ "$(expr substr "$(uname -s)" 1 5)" == "Linux" ]; then
-    echo -e "\u001b[33m==> Installing homebrew on linux\u001b[0m"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  fi
-fi
