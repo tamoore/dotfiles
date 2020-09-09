@@ -2,3 +2,5 @@
 name = Todd Moore
 email = 11851685+tamoore@users.noreply.github.com
 signingkey = BF0E6BCBC03704B8
+[commit]
+	gpgsign = true
