@@ -4,7 +4,9 @@
 #umask 022
 
 declare -x GPG_TTY
+declare SSH_ENV
 
+SSH_ENV="$HOME/.ssh/agent-environment"
 GPG_TTY=$(tty)
 
 # if running bash
@@ -34,4 +36,26 @@ fi
 # set PATH to include linuxbrew
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
     PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+fi
+
+function start_agent() {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    # shellcheck source=/dev/null
+    . "${SSH_ENV}" >/dev/null
+    /usr/bin/ssh-add
+}
+
+# Source SSH settings, if applicable
+if [ -f "${SSH_ENV}" ]; then
+    # shellcheck source=/dev/null
+    . "${SSH_ENV}" >/dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep "${SSH_AGENT_PID}" | grep ssh-agent$ >/dev/null || {
+        start_agent
+    }
+else
+    start_agent
 fi
