@@ -4,3 +4,8 @@ email = 11851685+tamoore@users.noreply.github.com
 signingkey = 26D4F54500B95E5D
 [commit]
 gpgsign = true
+[pull]
+rebase = true
+[alias]
+resign = "!re() { git rebase --exec 'git commit --amend --no-edit -n -S' -i $1; }; re"
+ls = "!re() { git log --show-signature; }; re"
