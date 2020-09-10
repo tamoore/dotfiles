@@ -19,3 +19,9 @@ sudo apt install -y vim
 
 # Set it to be our main editor
 echo 'export EDITOR=vim' >>"$HOME/.profile"
+
+# Ensure that the dotfiles gitconfig is included
+git config --global include.path "$HOME/dotfiles/git/.gitconfig"
+
+# Disable signing however
+git config -f "$HOME/dotfiles/git/.gitconfig" --unset commit.gpgsign

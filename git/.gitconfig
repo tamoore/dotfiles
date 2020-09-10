@@ -23,3 +23,6 @@ plh = "!re() { git pull origin HEAD; }; re"
 
 # Adds all
 ada = "!re() { git add .; }; re"
+
+# Add shortcut for status
+st = "!re() { git status; }; re"
