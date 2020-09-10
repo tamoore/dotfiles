@@ -9,3 +9,5 @@ rebase = true
 [alias]
 resign = "!re() { git rebase --exec 'git commit --amend --no-edit -n -S' -i $1; }; re"
 ls = "!re() { git log --show-signature; }; re"
+poh = "!re() { git push origin HEAD; }; re"
+plh = "!re() { git pull origin HEAD; }; re"
