@@ -16,6 +16,11 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+if [[ -f "$HOME/.secrets_env" ]]; then
+    # shellcheck source=/dev/null
+    . "$HOME/.secrets_env"
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
