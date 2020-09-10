@@ -25,3 +25,12 @@ git config --global include.path "$HOME/dotfiles/git/.gitconfig"
 
 # Disable signing however
 git config -f "$HOME/dotfiles/git/.gitconfig" --unset commit.gpgsign
+
+# Install stow
+sudo apt install -y stow
+
+# Setup gpg-agent
+cd "$HOME/dotfiles" || exit
+stow gnupg
+
+cd "$HOME" || exit
