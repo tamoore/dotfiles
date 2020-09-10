@@ -2,9 +2,6 @@
 
 declare WATCH_EXEC_VERSION="1.14.0"
 
-# shellcheck disable=SC2016
-echo 'export GPG_TTY=$(tty)' >>"$HOME/.profile"
-
 # Update apt
 sudo apt -y update
 
