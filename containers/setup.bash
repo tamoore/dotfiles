@@ -14,14 +14,11 @@ sudo apt install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
 # Install vim
 sudo apt install -y vim
 
-# Set it to be our main editor
-echo 'export EDITOR=vim' >>"$HOME/.profile"
-
 # Ensure that the dotfiles gitconfig is included
 git config --global include.path "$HOME/dotfiles/git/.gitconfig"
 
-# Disable signing however
-git config -f "$HOME/dotfiles/git/.gitconfig" --unset commit.gpgsign
-
 # Install stow
 sudo apt install -y stow
+
+# Copy profile to $HOME
+cp "$HOME/dotfiles/containers/.profile" "$HOME/"
