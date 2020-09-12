@@ -4,10 +4,13 @@
 #umask 022
 
 declare -x GPG_TTY
+declare -x BASH_SILENCE_DEPRECATION_WARNING
+
 declare SSH_ENV
 
 SSH_ENV="$HOME/.ssh/agent-environment"
 GPG_TTY=$(tty)
+BASH_SILENCE_DEPRECATION_WARNING=1
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
