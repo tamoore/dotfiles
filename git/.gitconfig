@@ -12,9 +12,6 @@ rebase = true
 # Resigns commits to a certain HASH
 resign = "!re() { git rebase --exec 'git commit --amend --no-edit -n -S' -i $1; }; re"
 
-# Lists all commits with signed info
-ls = "!re() { git log --show-signature; }; re"
-
 # Pushes to origin HEAD
 poh = "!re() { git push origin HEAD; }; re"
 
@@ -26,3 +23,5 @@ ada = "!re() { git add .; }; re"
 
 # Add shortcut for status
 st = "!re() { git status; }; re"
+[log]
+	showSignature = true
