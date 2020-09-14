@@ -27,7 +27,7 @@ cp "$HOME/dotfiles/containers/.profile" "$HOME/"
 mkdir -p "$HOME/.local"
 
 # Ensure that local is added
-stow -d "$HOME/dotfiles/.local" -t "$HOME/.local"
+stow -d "$HOME/dotfiles" -t "$HOME/.local" .local
 
 # Add git extras
 sudo apt install -y git-extras
