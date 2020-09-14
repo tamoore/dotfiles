@@ -22,3 +22,9 @@ sudo apt install -y stow
 
 # Copy profile to $HOME
 cp "$HOME/dotfiles/containers/.profile" "$HOME/"
+
+# Ensure that local is added
+stow -d "$HOME/dotfiles/.local" -t "$HOME/.local"
+
+# Add git extras
+sudo apt install -y git-extras
