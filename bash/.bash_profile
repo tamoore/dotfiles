@@ -4,8 +4,10 @@
 #umask 022
 
 declare -x GPG_TTY
-declare -x BASH_SILENCE_DEPRECATION_WARNING
 
+# Specifically for newer mac OS versions that are now using zsh as the default
+# shell
+declare -x BASH_SILENCE_DEPRECATION_WARNING
 declare SSH_ENV
 
 SSH_ENV="$HOME/.ssh/agent-environment"
@@ -41,6 +43,8 @@ if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
     PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 fi
 
+# Starts an ssh agent on login of shell. Ensures that if the agent is already
+# running that it does not open a second agent instance.
 function start_agent() {
     echo "Initialising new SSH agent..."
     /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"

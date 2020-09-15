@@ -3,13 +3,15 @@
 declare PKG_INSTALLER
 declare -a GNU_DEPS
 
-[ -x "$(command -v brew)" ] && PKG_INSTALLER='brew'
-[ -x "$(command -v apt)" ] && PKG_INSTALLER='apt'
-[ ! -x "$(command -v stow)" ] && GNU_DEPS+=('stow')
-[ ! -x "$(command -v git)" ] && GNU_DEPS+=('git')
-[ ! -x "$(command -v shellcheck)" ] && GNU_DEPS+=('shellcheck')
-[ ! -x "$(command -v socat)" ] && GNU_DEPS+=('socat')
-[ ! -x "$(command -v git-extras)" ] && GNU_DEPS+=('git-extras')
+[ -x "$(command -v brew)" ]            &&  PKG_INSTALLER='brew'
+[ -x "$(command -v apt)" ]             &&  PKG_INSTALLER='apt'
+
+[ ! -x "$(command -v stow)" ]          &&      GNU_DEPS+=('stow')
+[ ! -x "$(command -v git)" ]           &&      GNU_DEPS+=('git')
+[ ! -x "$(command -v shellcheck)" ]    &&      GNU_DEPS+=('shellcheck')
+[ ! -x "$(command -v socat)" ]         &&      GNU_DEPS+=('socat')
+[ ! -x "$(command -v git-extras)" ]    &&      GNU_DEPS+=('git-extras')
+[ ! -x "$(command -v libnotify-bin)" ] &&      GNU_DEPS+=('libnotify-bin')
 
 echo "==> Deps to install: ${GNU_DEPS[*]}"
 echo "==> Package installer: ${PKG_INSTALLER}"
