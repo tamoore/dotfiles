@@ -1,7 +1,8 @@
 # dotfiles
 
-The great and glorious `dotfiles`. Never have more time been invested into
-fewer character bytes by so many.
+The great and glorious `dotfiles`. 
+
+> Never has more time been invested into fewer character bytes, by so many.
 
 ## Installing 
 
