@@ -8,11 +8,13 @@ declare -x GPG_TTY
 # Specifically for newer mac OS versions that are now using zsh as the default
 # shell
 declare -x BASH_SILENCE_DEPRECATION_WARNING
+declare -x EDITOR
 declare SSH_ENV
 
 SSH_ENV="$HOME/.ssh/agent-environment"
 GPG_TTY=$(tty)
 BASH_SILENCE_DEPRECATION_WARNING=1
+EDITOR=nvim
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
