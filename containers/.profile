@@ -28,3 +28,8 @@ fi
 if [[ -d "/usr/local/go/bin" ]]; then
     PATH="/usr/local/go/bin:$PATH"
 fi
+
+# Add npm-global if that path exists
+if [[ -d "/usr/local/share/npm-global/bin" ]]; then
+    PATH="/usr/local/share/npm-global/bin:$PATH"
+fi
