@@ -29,6 +29,11 @@ if [[ -d "/usr/local/go/bin" ]]; then
     PATH="/usr/local/go/bin:$PATH"
 fi
 
+# Add local go path to PATH if it exists
+if [[ -d "/go/bin" ]]; then
+    PATH="/go/bin:$PATH"
+fi
+
 # Add npm-global if that path exists
 if [[ -d "/usr/local/share/npm-global/bin" ]]; then
     PATH="/usr/local/share/npm-global/bin:$PATH"
