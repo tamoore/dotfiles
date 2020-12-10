@@ -38,3 +38,11 @@ fi
 if [[ -d "/usr/local/share/npm-global/bin" ]]; then
     PATH="/usr/local/share/npm-global/bin:$PATH"
 fi
+
+# If the parameter $WORKSPACE_PATH has a lenght then set the node_modules
+# bin directory to be included on the path
+if [[ -n $WORKSPACE_PATH ]]; then
+    if [[ -d "$WORKSPACE_PATH/node_modules/.bin" ]]; then
+        PATH="$WORKSPACE_PATH/node_modules/.bin:$PATH"
+    fi
+fi
