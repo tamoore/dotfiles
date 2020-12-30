@@ -24,5 +24,4 @@ ada = "!re() { git add .; }; re"
 # Add shortcut for status
 st = "!re() { git status; }; re"
 
-[log]
-showSignature = true
+glog = "!re() { git log --oneline --graph --decorate; }; re"
