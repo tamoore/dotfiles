@@ -27,12 +27,18 @@ fi
 # Add go path to PATH if it exists
 if [[ -d "/usr/local/go/bin" ]]; then
     PATH="/usr/local/go/bin:$PATH"
+
+    # Add gopath bin to PATH if exists
+    if [[ -n $WORKSPACE_USER ]]; then
+        PATH="/home/$WORKSPACE_USER/go/bin:$PATH"
+    fi
+
+    # Add local go path to PATH if it exists
+    if [[ -d "/go/bin" ]]; then
+        PATH="/go/bin:$PATH"
+    fi
 fi
 
-# Add local go path to PATH if it exists
-if [[ -d "/go/bin" ]]; then
-    PATH="/go/bin:$PATH"
-fi
 
 # Add npm-global if that path exists
 if [[ -d "/usr/local/share/npm-global/bin" ]]; then
@@ -44,12 +50,5 @@ fi
 if [[ -n $WORKSPACE_PATH ]]; then
     if [[ -d "$WORKSPACE_PATH/node_modules/.bin" ]]; then
         PATH="$WORKSPACE_PATH/node_modules/.bin:$PATH"
-    fi
-fi
-
-# Add gopath bin to PATH if exists
-if [[ -n $WORKSPACE_USER ]]; then
-    if [[ -d "/home/$WORKSPACE_USER/go/bin" ]]; then
-        PATH="/home/$WORKSPACE_USER/go/bin:$PATH"
     fi
 fi
