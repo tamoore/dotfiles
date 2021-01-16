@@ -46,3 +46,8 @@ if [[ -n $WORKSPACE_PATH ]]; then
         PATH="$WORKSPACE_PATH/node_modules/.bin:$PATH"
     fi
 fi
+
+# Add gopath bin to PATH if exists
+if [[ -d "/home/$WORKSPACE_USER/go/bin" ]]; then
+    PATH="/home/$WORKSPACE_USER/go/bin:$PATH"
+fi
