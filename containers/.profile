@@ -48,6 +48,8 @@ if [[ -n $WORKSPACE_PATH ]]; then
 fi
 
 # Add gopath bin to PATH if exists
-if [[ -d "/home/$WORKSPACE_USER/go/bin" ]]; then
-    PATH="/home/$WORKSPACE_USER/go/bin:$PATH"
+if [[ -n $WORKSPACE_USER ]]; then
+    if [[ -d "/home/$WORKSPACE_USER/go/bin" ]]; then
+        PATH="/home/$WORKSPACE_USER/go/bin:$PATH"
+    fi
 fi
