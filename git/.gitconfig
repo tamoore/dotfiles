@@ -34,7 +34,10 @@ ap = "!re() { git add -p .; }; re"
 gbm = "!re() { go test -bench \"^(Benchmark*)\" ./...; }; re"
 
 # Commit with message
-co = "!re() { git commit -em \"$1\"; }; re"
+com = "!re() { git commit -em \"$1\"; }; re"
+
+# Commit with message
+coa = "!re() { git commit --amend }; re"
 
 # Run all go tests
-gbt = "!re() { go test ./... $1; }; re"
+got = "!re() { go test ./... $1; }; re"
