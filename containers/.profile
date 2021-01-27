@@ -2,6 +2,8 @@
 
 declare -x EDITOR
 
+alias g='git'
+
 if [[ $EDITOR != "vim" ]]; then
     EDITOR="vim"
 fi
