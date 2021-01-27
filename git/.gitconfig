@@ -24,4 +24,14 @@ ada = "!re() { git add .; }; re"
 # Add shortcut for status
 st = "!re() { git status; }; re"
 
+# Show the pretty graph
 glog = "!re() { git log --oneline --graph --decorate; }; re"
+
+# Add chunks
+ap = "!re() { git add -p .; }; re"
+
+# Run go benchmarks
+bm = "!re() { go test -bench \"^(Benchmark*)\" ./...; }; re"
+
+# Commit with message
+co = "!re() { git commit -em \"$1\"; }; re"
