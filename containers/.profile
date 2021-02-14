@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-set -e
-
 declare -x EDITOR
 
 alias g='git'
