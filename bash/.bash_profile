@@ -12,6 +12,7 @@ declare -x NNDEV_DOCKER_FOR_MAC
 declare -x DOTFILE_LOCATION
 declare -x EDITOR
 declare -x NVM_DIR
+declare -x BASTION_BACKEND_SPA
 declare NNDEV_DIR
 declare SSH_ENV
 
@@ -22,6 +23,7 @@ EDITOR=nvim
 NNDEV_DOCKER_FOR_MAC=TRUE
 DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
 NVM_DIR="$HOME/.nvm"
+BASTION_BACKEND_SPA="http://host.docker.internal:3000"
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
