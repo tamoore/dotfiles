@@ -7,7 +7,7 @@ declare DOTFILE_LOCATION
 
 # TODO: Totally need to refactor this to be a mac installer exclusively
 
-DOTFILE_LOCATION="$HOME/Projects/src/github.com/tamoore/dotfiles"
+DOTFILE_LOCATION=${DOTFILE_LOCATION:-"$HOME/.dotfiles"}
 PKG_INSTALLER='brew'
 [ ! -x "$(command -v stow)" ] && GNU_DEPS+=('stow')
 [ ! -x "$(command -v git)" ] && GNU_DEPS+=('git')
@@ -31,6 +31,10 @@ done
 
 # Ensure ssh folder exists
 mkdir -p "$HOME/.ssh"
+
+if [[ ! -d "$DOTFILE_LOCATION" ]]; then
+  ln -s "$PWD/../" "$HOME/.dotfiles"
+fi
 
 # Stow packages into correct locations
 stow -d "$DOTFILE_LOCATION" -t "$HOME" bash

@@ -123,3 +123,10 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
+
+# NVM related initialisation
+# 99designs uses nvm for node version swapping
+if [[ -n "$NVM_DIR" ]]; then
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+fi
