@@ -15,17 +15,8 @@ install_programs() {
     # Install watchexec
     sudo apt install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
 
-    # Install vim
-    sudo apt install -y vim
-
-    # Install stow
-    sudo apt install -y stow
-
-    # Add git extras
-    sudo apt install -y git-extras
-
-    # Get shellcheck
-    sudo apt install -y shellcheck
+    # Install programs
+    sudo apt install -y vim stow git-extras shellcheck git bash-completion
 }
 
 configure_environment() {
