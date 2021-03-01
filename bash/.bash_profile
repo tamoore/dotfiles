@@ -13,15 +13,17 @@ declare -x EDITOR
 declare -x NNDEV_DOCKER_FOR_MAC
 declare -x NVM_DIR
 declare -x SSH_ENV
+declare -x BASTION_BACKEND_SPA
 declare NNDEV_DIR
 
 SSH_ENV="$HOME/.ssh/agent-environment"
 GPG_TTY=$(tty)
 BASH_SILENCE_DEPRECATION_WARNING=1
 EDITOR=nvim
-NNDEV_DOCKER_FOR_MAC=true
+NNDEV_DOCKER_FOR_MAC=TRUE
 DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
 NVM_DIR="$HOME/.nvm"
+BASTION_BACKEND_SPA="http://host.docker.internal:3000"
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -30,6 +32,11 @@ if [ -n "$BASH_VERSION" ]; then
         # shellcheck source=/dev/null
         . "$HOME/.bashrc"
     fi
+fi
+
+# Source bash git completions
+if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+    . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
 
 if [[ -f "$HOME/.secrets_env" ]]; then

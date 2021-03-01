@@ -1,2 +1,4 @@
 .local/.local/*
 !.local/.local/bin/git-ink
+
+.config/*
