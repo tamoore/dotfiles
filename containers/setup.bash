@@ -5,7 +5,7 @@ declare WATCH_EXEC_VERSION="1.14.0"
 
 update_apt() {
     # Update apt
-    sudo apt -y update
+    apt-get -y update
 }
 
 install_programs() {
@@ -13,10 +13,10 @@ install_programs() {
     wget "https://github.com/watchexec/watchexec/releases/download/${WATCH_EXEC_VERSION}/watchexec-${WATCH_EXEC_VERSION}-x86_64-unknown-linux-gnu.deb" -O "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
 
     # Install watchexec
-    sudo apt install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
+    apt-get install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
 
     # Install programs
-    sudo apt install -y vim stow git-extras shellcheck git bash-completion
+    apt-get install -y vim stow git-extras shellcheck git bash-completion
 }
 
 configure_environment() {

@@ -14,6 +14,7 @@ declare -x NNDEV_DOCKER_FOR_MAC
 declare -x NVM_DIR
 declare -x SSH_ENV
 declare -x BASTION_BACKEND_SPA
+declare -x PROJECTS_DIR
 declare NNDEV_DIR
 
 SSH_ENV="$HOME/.ssh/agent-environment"
@@ -24,6 +25,7 @@ NNDEV_DOCKER_FOR_MAC=TRUE
 DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
 NVM_DIR="$HOME/.nvm"
 BASTION_BACKEND_SPA="http://host.docker.internal:3000"
+PROJECTS_DIR="$HOME/Projects/99designs"
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
