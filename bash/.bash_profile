@@ -65,3 +65,8 @@ fi
 if [[ -d "Projects/99designs/99dev/bin" ]]; then
     PATH="$NNDEV_DIR/bin:$PATH"
 fi
+
+# Ensure that brew vars are added to path
+if [[ -d "/usr/local/bin" ]]; then 
+    PATH="/usr/local/bin:$PATH"
+fi

@@ -1,4 +1,6 @@
 .local/.local/*
 !.local/.local/bin/git-ink
 
-.config/*
+.config/.config/*
+!.config/.config/alacritty/alacritty.yml
+!.config/.config/tmux/tmux.conf
