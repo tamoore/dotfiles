@@ -28,11 +28,16 @@ BASTION_BACKEND_SPA="http://host.docker.internal:3000"
 PROJECTS_DIR="$HOME/Projects/99designs"
 
 # if running bash
-if [ -n "$BASH_VERSION" ]; then
+if [[ -n "$BASH_VERSION" ]]; then
     # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
+    if [[ -f "$HOME/.bashrc" ]]; then
         # shellcheck source=/dev/null
         . "$HOME/.bashrc"
+    fi
+
+    # Source oh-my-bash
+    if [[ -f "$HOME/.oh-my-bash.rc" ]]; then
+        . "$HOME/.oh-my-bash.rc"
     fi
 fi
 
