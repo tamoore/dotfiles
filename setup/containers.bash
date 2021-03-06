@@ -17,7 +17,7 @@ install_programs() {
 
     # Remove oh my bash
     rm -rf ~/.oh-my-bash || true
-    bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" || true
+    wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O - || true
 
     # Install watchexec
     apt-get install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
@@ -29,11 +29,11 @@ install_programs() {
 configure_environment() {
     # Ensure that local is added
     stow -d "$HOME/dotfiles" -t "$HOME" .local
-    stow -d "$DOTFILE_LOCATION" -t "$HOME" bash
-    stow -d "$DOTFILE_LOCATION" -t "$HOME" containers
-    stow -d "$DOTFILE_LOCATION" -t "$HOME" git
-    stow -d "$DOTFILE_LOCATION" -t "$HOME" .local
-    stow -d "$DOTFILE_LOCATION" -t "$HOME" .config
+    stow -d "$HOME/dotfiles" -t "$HOME" bash
+    stow -d "$HOME/dotfiles" -t "$HOME" containers
+    stow -d "$HOME/dotfiles" -t "$HOME" git
+    stow -d "$HOME/dotfiles" -t "$HOME" .local
+    stow -d "$HOME/dotfiles" -t "$HOME" .config
 }
 
 main() {
