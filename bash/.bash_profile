@@ -3,29 +3,22 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-declare -x GPG_TTY
+declare -x BASH_SILENCE_DEPRECATION_WARNING=1
+declare -x GPG_TTY=$(tty)
+declare -x EDITOR=nvim
+declare -x NNDEV_DOCKER_FOR_MAC=TRUE
+declare -x NVM_DIR="$HOME/.nvm"
+declare -x SSH_ENV="$HOME/.ssh/agent-environment"
+declare -x DOCKER_UID=501
+declare -x DOCKER_GID=20
+declare -x COMPOSE_PROJECT_NAME=99dev
+declare -x DNSMASQ_DOCKERVM_IP=127.0.0.1
+declare -x DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
+declare -x BASTION_BACKEND_SPA="http://host.docker.internal:3000"
+declare -x PROJECTS_DIR="$HOME/Projects/99designs"
+declare -x INTERNAL_DOCKER_HOST=host.docker.internal
 
-# Specifically for newer mac OS versions that are now using zsh as the default
-# shell
-declare -x BASH_SILENCE_DEPRECATION_WARNING
-declare -x DOTFILE_LOCATION
-declare -x EDITOR
-declare -x NNDEV_DOCKER_FOR_MAC
-declare -x NVM_DIR
-declare -x SSH_ENV
-declare -x BASTION_BACKEND_SPA
-declare -x PROJECTS_DIR
 declare NNDEV_DIR
-
-SSH_ENV="$HOME/.ssh/agent-environment"
-GPG_TTY=$(tty)
-BASH_SILENCE_DEPRECATION_WARNING=1
-EDITOR=nvim
-NNDEV_DOCKER_FOR_MAC=TRUE
-DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
-NVM_DIR="$HOME/.nvm"
-BASTION_BACKEND_SPA="http://host.docker.internal:3000"
-PROJECTS_DIR="$HOME/Projects/99designs"
 
 # if running bash
 if [[ -n "$BASH_VERSION" ]]; then
