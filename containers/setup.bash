@@ -34,9 +34,6 @@ configure_environment() {
 
     # Ensure that local is added
     stow -d "$HOME/dotfiles" .local
-
-    # Add bashrc
-    ln -sf "$HOME/dotfiles/bash/.oh-my-bash.rc" "$HOME/.bashrc"
 }
 
 main() {
