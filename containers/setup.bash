@@ -30,7 +30,7 @@ configure_environment() {
     git config --global include.path "$HOME/dotfiles/git/.gitconfig"
 
     # Copy profile to $HOME
-    cp "$HOME/dotfiles/containers/.profile" "$HOME/"
+    cp "$HOME/dotfiles/containers/.bash_profile" "$HOME/.bash_profile"
 
     # Ensure that local is added
     stow -d "$HOME/dotfiles" .local
