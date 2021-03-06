@@ -18,7 +18,7 @@ install_programs() {
     # Remove oh my bash
     rm -rf $HOME/.bash_it
     git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
-    $HOME/.bash_it/install.sh --silent
+    $HOME/.bash_it/install.sh -f --silent
 
     # Install watchexec
     apt-get install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
@@ -30,11 +30,9 @@ install_programs() {
 configure_environment() {
     # Ensure that local is added
     rm "$HOME/.bashrc"
-    rm "$HOME/.bash_profile"
     stow -d "$HOME/dotfiles" -t "$HOME" .local
     stow -d "$HOME/dotfiles" -t "$HOME" bash
     stow -d "$HOME/dotfiles" -t "$HOME" containers
-    stow -d "$HOME/dotfiles" -t "$HOME" git
     stow -d "$HOME/dotfiles" -t "$HOME" .local
     stow -d "$HOME/dotfiles" -t "$HOME" .config
 }
