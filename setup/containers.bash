@@ -29,6 +29,7 @@ install_programs() {
 configure_environment() {
     # Ensure that local is added
     rm "$HOME/.bashrc"
+    rm "$HOME/.bash_profile"
     stow -d "$HOME/dotfiles" -t "$HOME" .local
     stow -d "$HOME/dotfiles" -t "$HOME" bash
     stow -d "$HOME/dotfiles" -t "$HOME" containers
