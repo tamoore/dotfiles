@@ -17,7 +17,7 @@ install_programs() {
 
     # Remove oh my bash
     rm -rf ~/.oh-my-bash || true
-    wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O - || true
+    bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" &
 
     # Install watchexec
     apt-get install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"

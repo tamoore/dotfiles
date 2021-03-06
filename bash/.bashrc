@@ -5,6 +5,11 @@
 
 declare force_color_prompt
 
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias g='git'
+
 # If not running interactively, don't do anything
 case $- in
 *i*) ;;
@@ -115,33 +120,22 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# NVM related initialisation
-# 99designs uses nvm for node version swapping
-if [[ -n "$NVM_DIR" ]]; then
-    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
-    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+# Source oh-my-bash
+if [[ -f "$HOME/.oh-my-bash.rc" ]]; then
+    . "$HOME/.oh-my-bash.rc"
 fi
 
-# Starts an ssh agent on login of shell. Ensures that if the agent is already
-# running that it does not open a second agent instance.
-function start_agent() {
-    echo "Initialising new SSH agent..."
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
-    # shellcheck source=/dev/null
-    . "${SSH_ENV}" >/dev/null
-    /usr/bin/ssh-add
-}
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 
-# Source SSH settings, if applicable
-if [ -f "${SSH_ENV}" ]; then
+if [[ -f "$HOME/.secrets_env" ]]; then
     # shellcheck source=/dev/null
-    . "${SSH_ENV}" >/dev/null
-    #ps ${SSH_AGENT_PID} doesn't work under cywgin
-    ps -ef | grep "${SSH_AGENT_PID}" | grep ssh-agent$ >/dev/null || {
-        start_agent
-    }
-else
-    start_agent
+    . "$HOME/.secrets_env"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then
+    PATH="$HOME/bin:$PATH"
 fi
