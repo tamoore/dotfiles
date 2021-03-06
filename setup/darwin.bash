@@ -36,6 +36,9 @@ if [[ ! -d "$DOTFILE_LOCATION" ]]; then
   ln -s "$PWD/../" "$HOME/.dotfiles"
 fi
 
+git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+$HOME/.bash_it/install.sh --silent
+
 # Stow packages into correct locations
 stow -d "$DOTFILE_LOCATION" -t "$HOME" bash
 stow -d "$DOTFILE_LOCATION" -t "$HOME" darwin

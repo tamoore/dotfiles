@@ -16,8 +16,8 @@ install_programs() {
     wget "https://github.com/watchexec/watchexec/releases/download/${WATCH_EXEC_VERSION}/watchexec-${WATCH_EXEC_VERSION}-x86_64-unknown-linux-gnu.deb" -O "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
 
     # Remove oh my bash
-    rm -rf ~/.oh-my-bash || true
-    bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" &
+    git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+    $HOME/.bash_it/install.sh --silent
 
     # Install watchexec
     apt-get install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"

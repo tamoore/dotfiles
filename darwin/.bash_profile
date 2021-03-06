@@ -73,3 +73,7 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent
 fi
+
+if [[ -d "$HOME/.bash_it" ]]; then
+    . "$HOME"/.bash_it/bash_it.sh
+fi

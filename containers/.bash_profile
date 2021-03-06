@@ -56,3 +56,7 @@ if [[ -n $WORKSPACE_PATH ]]; then
         PATH="$WORKSPACE_PATH/node_modules/.bin:$PATH"
     fi
 fi
+
+if [[ -d "$HOME/.bash_it" ]]; then
+    . "$HOME"/.bash_it/bash_it.sh
+fi

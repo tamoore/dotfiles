@@ -120,11 +120,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# Source oh-my-bash
-if [[ -f "$HOME/.oh-my-bash.rc" ]]; then
-    . "$HOME/.oh-my-bash.rc"
-fi
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
