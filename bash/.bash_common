@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias g='git'
+
+# if running bash
+if [[ -n "$BASH_VERSION" ]]; then
+    # include .bashrc if it exists
+    if [[ -f "$HOME/.bashrc" ]]; then
+        # shellcheck source=/dev/null
+        . "$HOME/.bashrc"
+    fi
+
+    # Source oh-my-bash
+    if [[ -f "$HOME/.oh-my-bash.rc" ]]; then
+        . "$HOME/.oh-my-bash.rc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [[ -f "$HOME/.secrets_env" ]]; then
+    # shellcheck source=/dev/null
+    . "$HOME/.secrets_env"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then
+    PATH="$HOME/bin:$PATH"
+fi

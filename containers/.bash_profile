@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 declare -x EDITOR
 
-alias g='git'
+if [[ -f "$HOME/.bash_common" ]]; then
+    . "$HOME/.bash_common"
+fi 
 
+# Set default editor
 if [[ $EDITOR != "vim" ]]; then
     EDITOR="vim"
 fi
 
+# Rust cargs
 if [[ -n $CARGO_HOME ]]; then
     PATH="${CARGO_HOME}/bin:$PATH"
 fi
@@ -39,7 +43,6 @@ if [[ -d "/usr/local/go/bin" ]]; then
         PATH="/go/bin:$PATH"
     fi
 fi
-
 
 # Add npm-global if that path exists
 if [[ -d "/usr/local/share/npm-global/bin" ]]; then

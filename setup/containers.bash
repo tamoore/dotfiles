@@ -17,6 +17,7 @@ install_programs() {
 
     # Remove oh my bash
     rm -rf ~/.oh-my-bash || true
+    bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
 
     # Install watchexec
     apt-get install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
@@ -26,14 +27,13 @@ install_programs() {
 }
 
 configure_environment() {
-    # Ensure that the dotfiles gitconfig is included
-    git config --global include.path "$HOME/dotfiles/git/.gitconfig"
-
-    # Copy profile to $HOME
-    cp "$HOME/dotfiles/containers/.bash_profile" "$HOME/.bash_profile"
-
     # Ensure that local is added
-    stow -d "$HOME/dotfiles" .local
+    stow -d "$HOME/dotfiles" -t "$HOME" .local
+    stow -d "$DOTFILE_LOCATION" -t "$HOME" bash
+    stow -d "$DOTFILE_LOCATION" -t "$HOME" containers
+    stow -d "$DOTFILE_LOCATION" -t "$HOME" git
+    stow -d "$DOTFILE_LOCATION" -t "$HOME" .local
+    stow -d "$DOTFILE_LOCATION" -t "$HOME" .config
 }
 
 main() {

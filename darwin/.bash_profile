@@ -17,41 +17,15 @@ declare -x DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
 declare -x BASTION_BACKEND_SPA="http://host.docker.internal:3000"
 declare -x PROJECTS_DIR="$HOME/Projects/99designs"
 declare -x INTERNAL_DOCKER_HOST=host.docker.internal
-
 declare NNDEV_DIR
 
-# if running bash
-if [[ -n "$BASH_VERSION" ]]; then
-    # include .bashrc if it exists
-    if [[ -f "$HOME/.bashrc" ]]; then
-        # shellcheck source=/dev/null
-        . "$HOME/.bashrc"
-    fi
-
-    # Source oh-my-bash
-    if [[ -f "$HOME/.oh-my-bash.rc" ]]; then
-        . "$HOME/.oh-my-bash.rc"
-    fi
-fi
+if [[ -f "$HOME/.bash_common" ]]; then
+    . "$HOME/.bash_common"
+fi 
 
 # Source bash git completions
 if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
     . "/usr/local/etc/profile.d/bash_completion.sh"
-fi
-
-if [[ -f "$HOME/.secrets_env" ]]; then
-    # shellcheck source=/dev/null
-    . "$HOME/.secrets_env"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
 fi
 
 # set PATH to include linuxbrew

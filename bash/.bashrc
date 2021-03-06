@@ -90,18 +90,9 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias g='git'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias to my own project folder
-alias tm='cd /home/tmoore/projects/github.com/tamoore'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -154,24 +145,3 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent
 fi
-
-# Create the same user prompt as the containers
-__bash_prompt() {
-    local userpart='`export XIT=$? \
-        && [ ! -z "${GITHUB_USER}" ] && echo -n "\[\033[0;32m\]@${GITHUB_USER} " || echo -n "\[\033[0;32m\]\u " \
-        && [ "$XIT" -ne "0" ] && echo -n "\[\033[1;31m\]➜" || echo -n "\[\033[0m\]➜"`'
-    local gitbranch='`export BRANCH=$(git describe --contains --all HEAD 2>/dev/null); \
-        if [ "${BRANCH}" != "" ]; then \
-            echo -n "\[\033[0;36m\](\[\033[1;31m\]${BRANCH}" \
-            && if git ls-files --error-unmatch -m --directory --no-empty-directory -o --exclude-standard ":/*" > /dev/null 2>&1; then \
-                    echo -n " \[\033[1;33m\]✗"; \
-            fi \
-            && echo -n "\[\033[0;36m\]) "; \
-        fi`'
-    local lightblue='\[\033[1;34m\]'
-    local removecolor='\[\033[0m\]'
-    PS1="${userpart} ${lightblue}\w ${gitbranch}${removecolor}\$ "
-    unset -f __bash_prompt
-}
-
-__bash_prompt
