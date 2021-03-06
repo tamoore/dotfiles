@@ -27,21 +27,15 @@ install_programs() {
 }
 
 configure_environment() {
-    local home
-    if [[ "$(whoami)" == "root" ]]; then
-        home="/root"
-    else 
-        home="/home/$(whoami)"
-    fi
-
-    rm "$home/.bashrc"
-    rm "$home/.bash_profile"
-    stow -d "$home/dotfiles" -t "$home" .local
-    stow -d "$home/dotfiles" -t "$home" bash
-    stow -d "$home/dotfiles" -t "$home" containers
-    stow -d "$home/dotfiles" -t "$home" git
-    stow -d "$home/dotfiles" -t "$home" .local
-    stow -d "$home/dotfiles" -t "$home" .config
+    # Ensure that local is added
+    rm "$HOME/.bashrc"
+    rm "$HOME/.bash_profile"
+    stow -d "$HOME/dotfiles" -t "$HOME" .local
+    stow -d "$HOME/dotfiles" -t "$HOME" bash
+    stow -d "$HOME/dotfiles" -t "$HOME" containers
+    stow -d "$HOME/dotfiles" -t "$HOME" git
+    stow -d "$HOME/dotfiles" -t "$HOME" .local
+    stow -d "$HOME/dotfiles" -t "$HOME" .config
 }
 
 main() {
