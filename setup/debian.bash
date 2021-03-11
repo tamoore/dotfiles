@@ -8,7 +8,8 @@ declare DOTFILE_LOCATION
 # TODO: Totally need to refactor this to be a mac installer exclusively
 
 DOTFILE_LOCATION=${DOTFILE_LOCATION:-"$HOME/.dotfiles"}
-PKG_INSTALLER='brew'
+
+PKG_INSTALLER='apt-get'
 [ ! -x "$(command -v stow)" ] && GNU_DEPS+=('stow')
 [ ! -x "$(command -v git)" ] && GNU_DEPS+=('git')
 [ ! -x "$(command -v shellcheck)" ] && GNU_DEPS+=('shellcheck')
@@ -22,7 +23,7 @@ echo "==> Package installer: ${PKG_INSTALLER}"
 # Install deps that are required
 for dep in "${GNU_DEPS[@]}"; do
   echo -e "==> Install ${dep}"
-  "$PKG_INSTALLER" install "${dep}" || {
+  "$PKG_INSTALLER" install -y "${dep}" || {
     echo "=> Failed to install ${dep}"
     exit 1
   }
@@ -33,16 +34,17 @@ done
 mkdir -p "$HOME/.ssh"
 
 if [[ ! -d "$DOTFILE_LOCATION" ]]; then
-  ln -s "$PWD/../" "$HOME/.dotfiles"
+  ln -s "$PWD" "$HOME/.dotfiles"
 fi
 
-if [[ ! -d "$DOTFILE_LOCATION" ]]; then
-  ln -s "$PWD/../" "$HOME/.dotfiles"
+if [[ ! -d "$HOME/.bash_it" ]]; then
+  git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+  $HOME/.bash_it/install.sh --silent
 fi
 
 # Stow packages into correct locations
 stow -d "$DOTFILE_LOCATION" -t "$HOME" bash
-stow -d "$DOTFILE_LOCATION" -t "$HOME" darwin
+stow -d "$DOTFILE_LOCATION" -t "$HOME" ubuntu
 stow -d "$DOTFILE_LOCATION" -t "$HOME" git
 stow -d "$DOTFILE_LOCATION" -t "$HOME" .local
 stow -d "$DOTFILE_LOCATION" -t "$HOME" .config
