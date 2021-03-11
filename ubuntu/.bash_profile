@@ -14,7 +14,10 @@ declare -x DNSMASQ_DOCKERVM_IP=127.0.0.1
 declare -x DOTFILE_LOCATION="$HOME/.dotfiles"
 declare -x PROJECTS_DIR="$HOME/Projects/99designs"
 declare -x INTERNAL_DOCKER_HOST=host.docker.internal
+declare -x DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
+declare -x LIBGL_ALWAYS_INDIRECT=1
 declare NNDEV_DIR="$HOME/Projects/99designs/99dev"
+# set DISPLAY variable to the IP automatically assigned to WSL2
 
 if [[ -f "$HOME/.bash_common" ]]; then
     . "$HOME/.bash_common"
@@ -38,6 +41,10 @@ fi
 # Ensure that brew vars are added to path
 if [[ -d "/usr/local/bin" ]]; then 
     PATH="/usr/local/bin:$PATH"
+fi
+
+if [[ -d "$HOME/.local/bin" ]]; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 # NVM related initialisation
