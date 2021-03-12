@@ -7,7 +7,7 @@ declare force_color_prompt
 
 if [[ -d "$HOME/.bash_it" ]]; then
     # shellcheck source=/Users/toddmoore/.bash_it/bash_it.sh
-    . "$HOME"/.bash_it/bash_it.sh
+    . "$BASH_IT"/bash_it.sh
 fi
 
 alias ll='ls -alF'

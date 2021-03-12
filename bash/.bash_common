@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 
-declare -x BASH_IT
-declare -x BASH_IT_THEME
-declare -x GIT_HOSTING
-declare -x TODO
-declare -x SCM_CHECK
+unset MAILCHECK
+
+BASH_IT="$HOME/.bash_it"
+BASH_IT_THEME='bobby'
+GIT_HOSTING='git@github.com'
+TODO="t"
+SCM_CHECK=false
+
+export BASH_IT
+export BASH_IT_THEME
+export GIT_HOSTING
+export TODO
+export SCM_CHECK
 
 # if running bash
 if [[ -n "$BASH_VERSION" ]]; then
@@ -13,14 +21,4 @@ if [[ -n "$BASH_VERSION" ]]; then
         # shellcheck source=/dev/null
         . "$HOME/.bashrc"
     fi
-fi
-
-# Path to the bash it configuration
-if [[ -d "$HOME/.bash_it" ]]; then
-    BASH_IT="$HOME/.bash_it"
-    BASH_IT_THEME='bobby'
-    GIT_HOSTING='git@github.com'
-    unset MAILCHECK
-    TODO="t"
-    SCM_CHECK=false
 fi
