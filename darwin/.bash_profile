@@ -3,23 +3,40 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-declare -x BASH_SILENCE_DEPRECATION_WARNING=1
-declare -x GPG_TTY=$(tty)
-declare -x EDITOR=nvim
-declare -x NNDEV_DOCKER_FOR_MAC=TRUE
-declare -x NVM_DIR="$HOME/.nvm"
-declare -x SSH_ENV="$HOME/.ssh/agent-environment"
-declare -x DOCKER_UID=501
-declare -x DOCKER_GID=20
-declare -x COMPOSE_PROJECT_NAME=99dev
-declare -x DNSMASQ_DOCKERVM_IP=127.0.0.1
-declare -x DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
-declare -x BASTION_BACKEND_SPA="http://host.docker.internal:3000"
-declare -x PROJECTS_DIR="$HOME/Projects/99designs"
-declare -x INTERNAL_DOCKER_HOST=host.docker.internal
 declare NNDEV_DIR
 
+BASH_SILENCE_DEPRECATION_WARNING=1
+GPG_TTY=$(tty)
+EDITOR=nvim
+NNDEV_DOCKER_FOR_MAC=TRUE
+NVM_DIR="$HOME/.nvm"
+SSH_ENV="$HOME/.ssh/agent-environment"
+DOCKER_UID=501
+DOCKER_GID=20
+COMPOSE_PROJECT_NAME=99dev
+DNSMASQ_DOCKERVM_IP=127.0.0.1
+DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
+BASTION_BACKEND_SPA="http://host.docker.internal:3000"
+PROJECTS_DIR="$HOME/Projects/9designs"
+INTERNAL_DOCKER_HOST=host.docker.internal
+
+export BASH_SILENCE_DEPRECATION_WARNING
+export GPG_TTY
+export EDITOR
+export NNDEV_DOCKER_FOR_MAC
+export NVM_DIR
+export SSH_ENV
+export DOCKER_UID
+export DOCKER_GID
+export COMPOSE_PROJECT_NAME
+export DNSMASQ_DOCKERVM_IP
+export DOTFILE_LOCATION
+export BASTION_BACKEND_SPA
+export PROJECTS_DIR
+export INTERNAL_DOCKER_HOST
+
 if [[ -f "$HOME/.bash_common" ]]; then
+    # shellcheck source=/Users/toddmoore/.bash_common
     . "$HOME/.bash_common"
 fi 
 

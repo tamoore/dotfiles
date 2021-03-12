@@ -5,6 +5,11 @@
 
 declare force_color_prompt
 
+if [[ -d "$HOME/.bash_it" ]]; then
+    # shellcheck source=/Users/toddmoore/.bash_it/bash_it.sh
+    . "$HOME"/.bash_it/bash_it.sh
+fi
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -133,8 +138,4 @@ fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
-fi
-
-if [[ -d "$HOME/.bash_it" ]]; then
-    . "$HOME"/.bash_it/bash_it.sh
 fi
