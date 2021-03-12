@@ -2,6 +2,7 @@
 declare -x EDITOR
 
 if [[ -f "$HOME/.bash_common" ]]; then
+    # shellcheck source=/Users/toddmoore/.bash_common
     . "$HOME/.bash_common"
 fi 
 
@@ -13,15 +14,6 @@ fi
 # Rust cargs
 if [[ -n $CARGO_HOME ]]; then
     PATH="${CARGO_HOME}/bin:$PATH"
-fi
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-        # shellcheck source=/dev/null
-        . "$HOME/.bashrc"
-    fi
 fi
 
 # Add .local/bin to the PATH
@@ -55,8 +47,4 @@ if [[ -n $WORKSPACE_PATH ]]; then
     if [[ -d "$WORKSPACE_PATH/node_modules/.bin" ]]; then
         PATH="$WORKSPACE_PATH/node_modules/.bin:$PATH"
     fi
-fi
-
-if [[ -d "$HOME/.bash_it" ]]; then
-    . "$HOME"/.bash_it/bash_it.sh
 fi
