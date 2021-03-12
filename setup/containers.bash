@@ -32,8 +32,8 @@ configure_environment() {
     rm "$HOME/.bashrc"
     stow -d "$HOME/dotfiles" -t "$HOME" .local
     stow -d "$HOME/dotfiles" -t "$HOME" bash
+    stow -d "$HOME/dotfiles" -t "$HOME" git
     stow -d "$HOME/dotfiles" -t "$HOME" containers
-    stow -d "$HOME/dotfiles" -t "$HOME" .local
     stow -d "$HOME/dotfiles" -t "$HOME" .config
 }
 
