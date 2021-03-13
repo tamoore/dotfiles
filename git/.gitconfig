@@ -41,3 +41,6 @@ coa = "!re() { git commit --amend }; re"
 
 # Run all go tests
 got = "!re() { go test ./... $1; }; re"
+
+# Run precommit file
+rpc = "!re() { $HOME/.githooks/pre-commit; }; re"
