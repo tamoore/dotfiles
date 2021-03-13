@@ -4,18 +4,31 @@
 . "$HOME/.githooks/utils.bash"
 
 run_php_tests() {
-	print_log "==> Running php tests"
+	local -a delta
+	print_log "Running php tests"
+	mapfile -t delta < <(git delta)
+	for line in "${delta[@]}"; do
+		local basename_without_ext
+		file="$(basename $line)"
+		basename_without_ext="${file%.*}"
+
+		test_file="$(find . -name "$basename_without_ext" | grep "Test")"
+
+		if [[ -n $test_file ]]; then
+			print_log "Found test file: $test_file"
+		fi
+	done
 }
 
 run_go_tests() {
 	if hash go >/dev/null; then
-		print_log "==> Running unit tests"
+		print_log "Running unit tests"
 		go test ./... | colorize_output
 	fi
 }
 
 main() {
-	echo "==> Running pre-commit hook"
+	print_log "Running pre-commit hook"
 	if [[ -f ./main.go ]]; then
 		run_go_tests
 	fi
