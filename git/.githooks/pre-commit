@@ -6,7 +6,7 @@
 run_php_tests() {
 	local -a delta
 	print_log "Running php tests"
-	mapfile -t delta < <(git delta)
+	mapfile -t delta < <(git status --short | awk '{print $2}')
 	for line in "${delta[@]}"; do
 		local basename_without_ext
 		file="$(basename $line)"

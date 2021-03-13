@@ -42,10 +42,10 @@ configure_git() {
 }
 
 main() {
-    update_apt
-    install_programs
-    configure_environment
-    configure_git
+    update_apt || true
+    install_programs || true
+    configure_environment || true
+    configure_git || true
 }
 
 main "$@"
