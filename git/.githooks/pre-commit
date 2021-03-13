@@ -3,8 +3,6 @@
 # shellcheck source=utils.bash
 . "$HOME/.githooks/utils.bash"
 
-set -x 
-
 run_php_tests() {
 	local -a delta
 	print_log "Running php tests"
@@ -14,10 +12,15 @@ run_php_tests() {
 		file="$(basename $line)"
 		basename_without_ext="${file%.*}"
 
-		test_file="$(find . -name "$basename_without_ext" | grep "Test")"
+		test_file="$(find . -name "$basename_without_ext*" | grep "Test")"
 
 		if [[ -n $test_file ]]; then
 			print_log "Found test file: $test_file"
+			if [[ -f $PWD/vendor/bin/phpunit ]]; then
+				print_log "Found phpunit"
+				print_log "Running test"
+				"$PWD/vendor/bin/phpunit" "$test_file"
+			fi
 		fi
 	done
 }
