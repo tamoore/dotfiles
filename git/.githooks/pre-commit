@@ -3,6 +3,8 @@
 # shellcheck source=utils.bash
 . "$HOME/.githooks/utils.bash"
 
+set -x 
+
 run_php_tests() {
 	local -a delta
 	print_log "Running php tests"
