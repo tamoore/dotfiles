@@ -37,10 +37,15 @@ configure_environment() {
     stow -d "$HOME/dotfiles" -t "$HOME" .config
 }
 
+configure_git() {
+    git config core.hooksPath "$HOME/.githooks"
+}
+
 main() {
     update_apt
     install_programs
     configure_environment
+    configure_git
 }
 
 main "$@"

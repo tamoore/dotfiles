@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# shellcheck source=utils.bash
+. "$HOME/.githooks/utils.bash"
+
+run_php_tests() {
+	print_log "==> Running php tests"
+}
+
+run_go_tests() {
+	if hash go >/dev/null; then
+		print_log "==> Running unit tests"
+		go test ./... | colorize_output
+	fi
+}
+
+main() {
+	echo "==> Running pre-commit hook"
+	if [[ -f ./main.go ]]; then
+		run_go_tests
+	fi
+
+	if [[ -f ./composer.json ]]; then
+		run_php_tests
+	fi
+}
+
+main
