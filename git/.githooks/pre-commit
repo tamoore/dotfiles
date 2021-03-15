@@ -12,7 +12,7 @@ run_php_tests() {
 		file="$(basename $line)"
 		basename_without_ext="${file%.*}"
 
-		test_file="$(find . -name "$basename_without_ext*" -not -path "./vendor*" -not -path "./tests*" | grep "Test.php")"
+		test_file="$(find . -name "$basename_without_ext*" -not -path "./vendor*" -not -path "./tests*" | grep -m 1 "Test.php")"
 
 		if [[ -n $test_file ]]; then
 			print_log "Found test file: $test_file"
