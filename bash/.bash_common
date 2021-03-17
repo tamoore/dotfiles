@@ -6,7 +6,7 @@ BASH_IT="$HOME/.bash_it"
 BASH_IT_THEME='bobby'
 GIT_HOSTING='git@github.com'
 TODO="t"
-SCM_CHECK=false
+SCM_CHECK=true
 
 export BASH_IT
 export BASH_IT_THEME
