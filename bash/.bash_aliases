@@ -3,16 +3,22 @@
 ## la='ls -A'
 ## l='ls -CF'
 ## g='git' 
-##
-## ==> OSX
-## con="cd ~/Projects/99designs/contests || true"
-## prj="cd ~/Projects/99designs/projects || true"
-## nn="cd ~/Projects/99designs || true"
-## tam="cd ~/Projects/tamoore || true"
-## p="cd ~/Projects || true"
+# OSX ----
+#O con="cd ~/Projects/99designs/contests || true"
+#O prj="cd ~/Projects/99designs/projects || true"
+#O nn="cd ~/Projects/99designs || true"
+#O tam="cd ~/Projects/tamoore || true"
+#O p="cd ~/Projects || true"
 
-print_aliases() {
+palias() {
+  echo "==> Bash Aliases"
   grep "^##" "${BASH_SOURCE[${#BASH_SOURCE[@]}-1]}" | cut -c 4-
+  if is_osx; then
+    grep "^#O" "${BASH_SOURCE[${#BASH_SOURCE[@]}-1]}" | cut -c 4-
+  fi
+  echo ""
+  echo "==> Git Aliases"
+  git alias
 }
 
 function is_osx() {
