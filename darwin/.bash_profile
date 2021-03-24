@@ -3,12 +3,9 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-declare NNDEV_DIR
-
 BASH_SILENCE_DEPRECATION_WARNING=1
 GPG_TTY=$(tty)
 EDITOR=nvim
-NNDEV_DOCKER_FOR_MAC=TRUE
 NVM_DIR="$HOME/.nvm"
 SSH_ENV="$HOME/.ssh/agent-environment"
 DOCKER_UID=501
@@ -16,14 +13,15 @@ DOCKER_GID=20
 COMPOSE_PROJECT_NAME=99dev
 DNSMASQ_DOCKERVM_IP=127.0.0.1
 DOTFILE_LOCATION="$HOME/.dotfiles"
-BASTION_BACKEND_SPA="http://host.docker.internal:3000"
 PROJECTS_DIR="$HOME/Projects/99designs"
 INTERNAL_DOCKER_HOST=host.docker.internal
+MACHINE_DRIVER=hyperkit
+DOCKER_BUILDKIT=1
+COMPOSE_DOCKER_CLI_BUILD=1
 
 export BASH_SILENCE_DEPRECATION_WARNING
 export GPG_TTY
 export EDITOR
-export NNDEV_DOCKER_FOR_MAC
 export NVM_DIR
 export SSH_ENV
 export DOCKER_UID
@@ -31,9 +29,11 @@ export DOCKER_GID
 export COMPOSE_PROJECT_NAME
 export DNSMASQ_DOCKERVM_IP
 export DOTFILE_LOCATION
-export BASTION_BACKEND_SPA
 export PROJECTS_DIR
 export INTERNAL_DOCKER_HOST
+export MACHINE_DRIVER
+export DOCKER_BUILDKIT
+export COMPOSE_DOCKER_CLI_BUILD
 
 if [[ -f "$HOME/.bash_common" ]]; then
     # shellcheck source=/Users/toddmoore/.bash_common
@@ -90,3 +90,5 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent
 fi
+
+eval $(docker-machine env $(99dev machine-name))
