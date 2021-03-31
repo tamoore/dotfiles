@@ -18,7 +18,6 @@ INTERNAL_DOCKER_HOST=host.docker.internal
 MACHINE_DRIVER=amazonec2
 DOCKER_BUILDKIT=1
 COMPOSE_DOCKER_CLI_BUILD=1
-NNDEV_AMI="ami-0b2057569012a914c"
 
 export BASH_SILENCE_DEPRECATION_WARNING
 export GPG_TTY
@@ -35,7 +34,6 @@ export INTERNAL_DOCKER_HOST
 export MACHINE_DRIVER
 export DOCKER_BUILDKIT
 export COMPOSE_DOCKER_CLI_BUILD
-export NNDEV_AMI
 
 if [[ -f "$HOME/.bash_common" ]]; then
     # shellcheck source=/Users/toddmoore/.bash_common
