@@ -122,7 +122,6 @@ fi
 
 # 99design functions
 # ------------------------------------------------------------------------------
-
 clone_nnrepo() {
     repo_name="$1"
 
@@ -141,4 +140,14 @@ clone_nnrepo() {
 
 nnssh() {
     docker-machine ssh "$DOCKER_MACHINE_NAME" -A
+}
+
+pull_contests() {
+    mkdir -p "$HOME/Projects/99designs/vscode-dev-containers/github.com/99designs/contests/sync"
+    rsync -av --exclude '*.git*' \
+        --exclude '*var*' \
+        --exclude '*node_modules*' \
+        --exclude '*vendor*' \
+        -e "docker-machine ssh $DOCKER_MACHINE_NAME" \
+        :/home/ubuntu/Projects/99designs/contests/ "$HOME/Projects/99designs/vscode-dev-containers/github.com/99designs/contests/sync/"
 }
