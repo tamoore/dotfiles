@@ -1,3 +1,6 @@
+[init]
+defaultBranch = main
+
 [user]
 name = Todd Moore
 email = 11851685+tamoore@users.noreply.github.com
@@ -5,10 +8,12 @@ signingkey = 26D4F54500B95E5D
 
 [commit]
 gpgsign = true
+
 [pull]
 rebase = true
 
 [alias]
+
 # Resigns commits to a certain HASH
 resign = "!re() { git rebase --exec 'git commit --amend --no-edit -n -S' -i $1; }; re"
 
@@ -20,9 +25,6 @@ plh = "!re() { git pull origin HEAD; }; re"
 
 # Adds all
 ada = "!re() { git add .; }; re"
-
-# Add shortcut for status
-st = "!re() { git status; }; re"
 
 # Show the pretty graph
 glog = "!re() { git log --oneline --graph --decorate; }; re"
@@ -44,3 +46,7 @@ got = "!re() { go test ./... $1; }; re"
 
 # Run precommit file
 rpc = "!re() { $HOME/.githooks/pre-commit; }; re"
+
+co = checkout
+st = status
+br = branch
