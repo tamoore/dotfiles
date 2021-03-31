@@ -119,3 +119,26 @@ if [[ -d "$HOME/.bash_it" ]]; then
     # shellcheck source=/Users/toddmoore/.bash_it/bash_it.sh
     . "$BASH_IT"/bash_it.sh
 fi
+
+# 99design functions
+# ------------------------------------------------------------------------------
+
+clone_nnrepo() {
+    repo_name="$1"
+
+    if [[ -z $DOCKER_MACHINE_NAME ]]; then
+        echo "clone_nnrepo: no docker machine name set"
+        return 1
+    fi
+
+    if [[ -z $repo_name ]]; then
+        echo "clone_nnrepo: no repo name given" >&2
+        return 1
+    fi
+
+    docker-machine ssh "$DOCKER_MACHINE_NAME" -A "git clone git@github.com:99designs/$repo_name /home/ubuntu/Projects/99designs/$repo_name 2>&1"
+}
+
+nnssh() {
+    docker-machine ssh "$DOCKER_MACHINE_NAME" -A
+}
