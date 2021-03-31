@@ -43,8 +43,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 if is_osx; then
-    alias con="cd ~/Projects/99designs/contests || true"
-    alias prj="cd ~/Projects/99designs/projects || true"
+    alias con="cd ~/Projects/99designs/vscode-dev-containers/github.com/99designs/contests || true"
     alias nn="cd ~/Projects/99designs || true"
     alias tam="cd ~/Projects/tamoore || true"
     alias p="cd ~/Projects || true"
