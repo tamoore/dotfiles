@@ -8,6 +8,7 @@
 #O prj="cd ~/Projects/99designs/projects || true"
 #O nn="cd ~/Projects/99designs || true"
 #O tam="cd ~/Projects/tamoore || true"
+#O vctm="cd ~/Projects/tamoore/vscode-dev-containers || true"
 #O p="cd ~/Projects || true"
 
 palias() {
@@ -46,6 +47,7 @@ if is_osx; then
     alias con="cd ~/Projects/99designs/vscode-dev-containers/github.com/99designs/contests || true"
     alias nn="cd ~/Projects/99designs || true"
     alias tam="cd ~/Projects/tamoore || true"
+    alias vctm="cd ~/Projects/tamoore/vscode-dev-containers || true"
     alias p="cd ~/Projects || true"
 else
     true
