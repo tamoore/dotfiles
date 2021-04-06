@@ -24,7 +24,7 @@ install_programs() {
     apt-get install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
 
     # Install programs
-    apt-get install -y vim stow git-extras shellcheck git bash-completion parallel ripgrep
+    apt-get install -y neovim stow git-extras shellcheck git bash-completion parallel ripgrep
 }
 
 configure_environment() {

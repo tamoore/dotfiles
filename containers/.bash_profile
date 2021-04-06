@@ -7,8 +7,8 @@ if [[ -f "$HOME/.bash_common" ]]; then
 fi 
 
 # Set default editor
-if [[ $EDITOR != "vim" ]]; then
-    EDITOR="vim"
+if [[ $EDITOR != "nvim" ]]; then
+    EDITOR="nvim"
 fi
 
 # Rust cargs
