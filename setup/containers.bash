@@ -25,6 +25,10 @@ install_programs() {
 
     # Install programs
     apt-get install -y neovim stow git-extras shellcheck git bash-completion parallel ripgrep
+
+    # Ensure vim plug is installed for neovim
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
 configure_environment() {

@@ -40,6 +40,10 @@ if [[ ! -d "$DOTFILE_LOCATION" ]]; then
   ln -s "$PWD/../" "$HOME/.dotfiles"
 fi
 
+# Ensure vim plug is installed for neovim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 # Stow packages into correct locations
 stow -d "$DOTFILE_LOCATION" -t "$HOME" bash
 stow -d "$DOTFILE_LOCATION" -t "$HOME" darwin
