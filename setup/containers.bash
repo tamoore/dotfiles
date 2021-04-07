@@ -9,6 +9,13 @@ update_apt() {
     apt-get -y update
 }
 
+install_git_extras() {
+    git clone https://github.com/tj/git-extras.git
+    cd git-extras || true
+    git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
+    make install
+}
+
 install_programs() {
     apt-get install wget
 
@@ -23,8 +30,11 @@ install_programs() {
     # Install watchexec
     apt-get install "$HOME/watchexec-${WATCH_EXEC_VERSION}.deb"
 
+    # Install git extras
+    install_git_extras
+
     # Install programs
-    apt-get install -y neovim stow git-extras shellcheck git bash-completion parallel ripgrep
+    apt-get install -y neovim stow shellcheck git bash-completion parallel ripgrep
 
     # Ensure vim plug is installed for neovim
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
