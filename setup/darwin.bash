@@ -5,16 +5,15 @@ declare PKG_INSTALLER
 declare -a GNU_DEPS
 declare DOTFILE_LOCATION
 
-# TODO: Totally need to refactor this to be a mac installer exclusively
-
 DOTFILE_LOCATION=${DOTFILE_LOCATION:-"$HOME/.dotfiles"}
 PKG_INSTALLER='brew'
-[ ! -x "$(command -v stow)" ] && GNU_DEPS+=('stow')
-[ ! -x "$(command -v git)" ] && GNU_DEPS+=('git')
-[ ! -x "$(command -v shellcheck)" ] && GNU_DEPS+=('shellcheck')
-[ ! -x "$(command -v socat)" ] && GNU_DEPS+=('socat')
-[ ! -x "$(command -v git-extras)" ] && GNU_DEPS+=('git-extras')
-[ ! -x "$(command -v nvim)" ] && GNU_DEPS+=('neovim')
+
+[  !  -x  "$(command  -v  stow)"        ]  &&  GNU_DEPS+=('stow')
+[  !  -x  "$(command  -v  git)"         ]  &&  GNU_DEPS+=('git')
+[  !  -x  "$(command  -v  shellcheck)"  ]  &&  GNU_DEPS+=('shellcheck')
+[  !  -x  "$(command  -v  socat)"       ]  &&  GNU_DEPS+=('socat')
+[  !  -x  "$(command  -v  git-extras)"  ]  &&  GNU_DEPS+=('git-extras')
+[  !  -x  "$(command  -v  nvim)"        ]  &&  GNU_DEPS+=('neovim')
 
 echo "==> Deps to install: ${GNU_DEPS[*]}"
 echo "==> Package installer: ${PKG_INSTALLER}"
@@ -40,9 +39,12 @@ if [[ ! -d "$DOTFILE_LOCATION" ]]; then
   ln -s "$PWD/../" "$HOME/.dotfiles"
 fi
 
-# Ensure vim plug is installed for neovim
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if [[ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]]; then
+  # Ensure vim plug is installed for neovim
+  sh -c 'curl -fLo ' \
+    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+fi
 
 # Stow packages into correct locations
 stow -d "$DOTFILE_LOCATION" -t "$HOME" bash
