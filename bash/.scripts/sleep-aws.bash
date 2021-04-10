@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-machine stop "$(99dev machine-name)"
+/usr/local/bin/docker-machine stop "99dev-amazonec2-todd-moore"
