@@ -119,3 +119,7 @@ if [[ -d "$HOME/.bash_it" ]]; then
     # shellcheck source=/Users/toddmoore/.bash_it/bash_it.sh
     . "$BASH_IT"/bash_it.sh
 fi
+
+pskhd() {
+    grep "##" -A 2  "$HOME/.config/skhd/skhdrc" | sed '/^--$/d'
+}

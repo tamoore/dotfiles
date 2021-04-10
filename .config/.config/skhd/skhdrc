@@ -1,27 +1,50 @@
+##
+## Focus commands ##############################################################
+#-------------------------------------------------------------------------------
+
 # focus window
+## Focus west
 ctrl + shift - h : yabai -m window --focus west
+
+## Focus south
 ctrl + shift - j : yabai -m window --focus south
+
+## Focus north
 ctrl + shift - k : yabai -m window --focus north
+
+## Focus east
 ctrl + shift - l : yabai -m window --focus east
 
-# maximise current window
-ctrl + shift - y : yabai -m window --toggle zoom-fullscreen
-
 # focus recent space
+## Focus to recent space
 ctrl + shift - u : yabai -m space --focus recent
+
+## Focus to next space
 ctrl + shift - o : yabai -m space --focus next
+
+## Focus to prev space
 ctrl + shift - i : yabai -m space --focus prev
 
+## Zoom the curent window
+ctrl + shift - y : yabai -m window --toggle zoom-fullscreen
+
+##
+## Modifying commands ##########################################################
+#-------------------------------------------------------------------------------
+
 # rotate windows
-ctrl + shift - space : yabai -m space --rotate 90
+## Rotate the windows
+ctrl + cmd - space : yabai -m space --rotate 90
 
 # move to space
+## Move focused window to the recent space
 ctrl + cmd - u : yabai -m window --space recent
+
+## Move the focused window the prev space
 ctrl + cmd - i : yabai -m window --space prev
+
+## Move the focused window to next space
 ctrl + cmd - o : yabai -m window --space next
 
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-ctrl + shift - n : yabai -m space --create && \
-                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                   yabai -m window --space "${index}" && \
-                   yabai -m space --focus "${index}"
+## Create a new space and move current window to it
+ctrl + cmd - n : yabai -m space --create && index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && yabai -m window --space "${index}" && yabai -m space --focus "${index}"
