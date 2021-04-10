@@ -46,5 +46,4 @@ fi
 stow -d "$DOTFILE_LOCATION" -t "$HOME" bash
 stow -d "$DOTFILE_LOCATION" -t "$HOME" ubuntu
 stow -d "$DOTFILE_LOCATION" -t "$HOME" git
-stow -d "$DOTFILE_LOCATION" -t "$HOME" .local
-stow -d "$DOTFILE_LOCATION" -t "$HOME" .config
+stow -d "$DOTFILE_LOCATION" -t "$HOME" xdg
