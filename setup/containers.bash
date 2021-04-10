@@ -35,10 +35,6 @@ install_programs() {
 
     # Install programs
     apt-get install -y neovim stow shellcheck git bash-completion parallel ripgrep
-
-    # Ensure vim plug is installed for neovim
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
 configure_environment() {
@@ -48,6 +44,10 @@ configure_environment() {
     stow -d "$HOME/dotfiles" -t "$HOME" bash
     stow -d "$HOME/dotfiles" -t "$HOME" git
     stow -d "$HOME/dotfiles" -t "$HOME" xdg
+
+    # Ensure vim plug is installed for neovim
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
 configure_git() {
