@@ -16,9 +16,9 @@ ctrl + shift - i : yabai -m space --focus prev
 ctrl + shift - space : yabai -m space --rotate 90
 
 # move to space
-ctrl + alt - u : yabai -m window --space recent
-ctrl + alt - i : yabai -m window --space prev
-ctrl + alt - o : yabai -m window --space next
+ctrl + cmd - u : yabai -m window --space recent
+ctrl + cmd - i : yabai -m window --space prev
+ctrl + cmd - o : yabai -m window --space next
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 ctrl + shift - n : yabai -m space --create && \
