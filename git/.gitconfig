@@ -12,6 +12,9 @@ gpgsign = true
 [pull]
 rebase = true
 
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
 [alias]
 
 # Resigns commits to a certain HASH
