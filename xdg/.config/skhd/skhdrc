@@ -28,6 +28,13 @@ ctrl + shift - i : yabai -m space --focus prev
 ## Zoom the curent window
 ctrl + shift - y : yabai -m window --toggle zoom-fullscreen
 
+## Focus spaces
+ctrl + shift - 6 : yabai -m space --focus todos
+ctrl + shift - 7 : yabai -m space --focus term
+ctrl + shift - 8 : yabai -m space --focus code
+ctrl + shift - 9 : yabai -m space --focus web
+ctrl + shift - 0 : yabai -m space --focus media
+
 ##
 ## Modifying commands ##########################################################
 #-------------------------------------------------------------------------------
