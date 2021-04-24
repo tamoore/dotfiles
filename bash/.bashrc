@@ -120,6 +120,17 @@ if [[ -d "$HOME/.bash_it" ]]; then
     . "$BASH_IT"/bash_it.sh
 fi
 
+# output all the hotkeys for skhd
 pskhd() {
     grep "##" -A 2  "$HOME/.config/skhd/skhdrc" | sed '/^--$/d'
+}
+
+# Auth 1password session
+auth_1password() {
+    eval $(op signin my)
+}
+
+# Attach a github token to the current session
+attach_gh_token() {
+    export ${1:-GITHUB_TOKEN}="$(op list items | jq -r '.[] | select(.overview.title=="Github PAT") | .uuid' | xargs -I {} op get item {} | jq -r '.details.password')"
 }
