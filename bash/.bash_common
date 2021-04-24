@@ -26,3 +26,8 @@ fi
 if [[ -f "$HOME/.profile" ]]; then
     . "$HOME/.profile"
 fi
+
+# Add .local/bin to path
+if [[ -d "$HOME/.local/bin" ]]; then
+    $PATH="$HOME/.local/bin:$PATH"
+fi
