@@ -54,6 +54,7 @@ yabai -m rule --add app="^Things$" space=todos
 yabai -m rule --add app="^Trello$" space=todos
 yabai -m rule --add app="^Alacritty$" space=term
 yabai -m rule --add app="^Spotify$" space=media
+yabai -m rule --add app="^Pragli$" space=media
 yabai -m rule --add app="^System Preferences$" manage=off
 
 echo "yabai configuration loaded.."
