@@ -45,11 +45,6 @@ if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
     . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
 
-# set PATH to include linuxbrew
-if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
-    PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-fi
-
 # Add 99dev to path
 if [[ -d "Projects/99designs/99dev/bin" ]]; then
     PATH="$NNDEV_DIR/bin:$PATH"
@@ -58,13 +53,6 @@ fi
 # Ensure that brew vars are added to path
 if [[ -d "/usr/local/bin" ]]; then 
     PATH="/usr/local/bin:$PATH"
-fi
-
-# NVM related initialisation
-# 99designs uses nvm for node version swapping
-if [[ -n "$NVM_DIR" ]]; then
-    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
-    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 fi
 
 # Starts an ssh agent on login of shell. Ensures that if the agent is already
