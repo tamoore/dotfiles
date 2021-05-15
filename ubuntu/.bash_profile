@@ -13,6 +13,7 @@ COMPOSE_DOCKER_CLI_BUILD=1
 DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
 LIBGL_ALWAYS_INDIRECT=1
 NNDEV_DIR="$HOME/Projects/99designs/99dev"
+COMPOSE_PROJECT_NAME=99dev
 
 export GPG_TTY
 export EDITOR
@@ -23,6 +24,7 @@ export DOCKER_BUILDKIT
 export COMPOSE_DOCKER_CLI_BUILD
 export DISPLAY
 export NNDEV_DIR
+export COMPOSE_PROJECT_NAME
 
 # set DISPLAY variable to the IP automatically assigned to WSL2
 
