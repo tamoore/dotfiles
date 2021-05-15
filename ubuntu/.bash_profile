@@ -5,13 +5,8 @@
 
 declare -x GPG_TTY=$(tty)
 declare -x EDITOR=nvim
-declare -x NVM_DIR="$HOME/.nvm"
 declare -x SSH_ENV="$HOME/.ssh/agent-environment"
-declare -x DOCKER_UID=501
-declare -x DOCKER_GID=20
-declare -x COMPOSE_PROJECT_NAME=99dev
-declare -x DNSMASQ_DOCKERVM_IP=127.0.0.1
-declare -x DOTFILE_LOCATION="$HOME/.dotfiles"
+declare -x DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
 declare -x PROJECTS_DIR="$HOME/Projects/99designs"
 declare -x INTERNAL_DOCKER_HOST=host.docker.internal
 declare -x DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
@@ -76,8 +71,4 @@ if [ -f "${SSH_ENV}" ]; then
     }
 else
     start_agent
-fi
-
-if [[ -d "$HOME/.bash_it" ]]; then
-    . "$HOME"/.bash_it/bash_it.sh
 fi

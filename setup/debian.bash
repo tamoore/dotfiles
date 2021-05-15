@@ -5,17 +5,15 @@ declare PKG_INSTALLER
 declare -a GNU_DEPS
 declare DOTFILE_LOCATION
 
-# TODO: Totally need to refactor this to be a mac installer exclusively
-
-DOTFILE_LOCATION=${DOTFILE_LOCATION:-"$HOME/.dotfiles"}
-
+DOTFILE_LOCATION=${DOTFILE_LOCATION:-"$HOME/Projects/tamoore/dotfiles"}
 PKG_INSTALLER='apt-get'
-[ ! -x "$(command -v stow)" ] && GNU_DEPS+=('stow')
-[ ! -x "$(command -v git)" ] && GNU_DEPS+=('git')
-[ ! -x "$(command -v shellcheck)" ] && GNU_DEPS+=('shellcheck')
-[ ! -x "$(command -v socat)" ] && GNU_DEPS+=('socat')
-[ ! -x "$(command -v git-extras)" ] && GNU_DEPS+=('git-extras')
-[ ! -x "$(command -v nvim)" ] && GNU_DEPS+=('neovim')
+
+[  !  -x  "$(command  -v  stow)"        ]  &&  GNU_DEPS+=('stow')
+[  !  -x  "$(command  -v  git)"         ]  &&  GNU_DEPS+=('git')
+[  !  -x  "$(command  -v  shellcheck)"  ]  &&  GNU_DEPS+=('shellcheck')
+[  !  -x  "$(command  -v  socat)"       ]  &&  GNU_DEPS+=('socat')
+[  !  -x  "$(command  -v  git-extras)"  ]  &&  GNU_DEPS+=('git-extras')
+[  !  -x  "$(command  -v  nvim)"        ]  &&  GNU_DEPS+=('neovim')
 
 echo "==> Deps to install: ${GNU_DEPS[*]}"
 echo "==> Package installer: ${PKG_INSTALLER}"
@@ -32,10 +30,6 @@ done
 
 # Ensure ssh folder exists
 mkdir -p "$HOME/.ssh"
-
-if [[ ! -d "$DOTFILE_LOCATION" ]]; then
-  ln -s "$PWD" "$HOME/.dotfiles"
-fi
 
 if [[ ! -d "$HOME/.bash_it" ]]; then
   git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
