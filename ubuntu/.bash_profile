@@ -3,15 +3,27 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-declare -x GPG_TTY=$(tty)
-declare -x EDITOR=nvim
-declare -x SSH_ENV="$HOME/.ssh/agent-environment"
-declare -x DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
-declare -x PROJECTS_DIR="$HOME/Projects/99designs"
-declare -x INTERNAL_DOCKER_HOST=host.docker.internal
-declare -x DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
-declare -x LIBGL_ALWAYS_INDIRECT=1
-declare NNDEV_DIR="$HOME/Projects/99designs/99dev"
+GPG_TTY=$(tty)
+EDITOR=nvim
+SSH_ENV="$HOME/.ssh/agent-environment"
+DOTFILE_LOCATION="$HOME/Projects/tamoore/dotfiles"
+PROJECTS_DIR="$HOME/Projects/99designs"
+DOCKER_BUILDKIT=1
+COMPOSE_DOCKER_CLI_BUILD=1
+DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
+LIBGL_ALWAYS_INDIRECT=1
+NNDEV_DIR="$HOME/Projects/99designs/99dev"
+
+export GPG_TTY
+export EDITOR
+export SSH_ENV
+export DOTFILE_LOCATION
+export PROJECTS_DIR
+export DOCKER_BUILDKIT
+export COMPOSE_DOCKER_CLI_BUILD
+export DISPLAY
+export NNDEV_DIR
+
 # set DISPLAY variable to the IP automatically assigned to WSL2
 
 if [[ -f "$HOME/.bash_common" ]]; then

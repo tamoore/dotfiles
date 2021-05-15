@@ -26,6 +26,12 @@ alias la='ls -A'
 alias l='ls -CF'
 ## g='git' 
 alias g='git'
+## nn="cd ~/Projects/99designs || true"
+alias nn="cd ~/Projects/99designs || true"
+## tam="cd ~/Projects/tamoore || true"
+alias tam="cd ~/Projects/tamoore || true"
+## prj="cd ~/Projects/99designs/projects || true"
+alias prj="cd ~/Projects || true"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -39,14 +45,8 @@ fi
 if is_osx; then
 #O con="cd ~/Projects/99designs/contests || true"
 alias con="cd ~/Projects/99designs/vscode-dev-containers/github.com/99designs/contests || true"
-#O nn="cd ~/Projects/99designs || true"
-alias nn="cd ~/Projects/99designs || true"
-#O tam="cd ~/Projects/tamoore || true"
-alias tam="cd ~/Projects/tamoore || true"
 #O vctm="cd ~/Projects/tamoore/vscode-dev-containers || true"
 alias vctm="cd ~/Projects/tamoore/vscode-dev-containers || true"
-#O prj="cd ~/Projects/99designs/projects || true"
-alias prj="cd ~/Projects || true"
 else
     true
 fi
