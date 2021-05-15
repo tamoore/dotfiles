@@ -41,3 +41,8 @@ stow -d "$DOTFILE_LOCATION" -t "$HOME" bash
 stow -d "$DOTFILE_LOCATION" -t "$HOME" ubuntu
 stow -d "$DOTFILE_LOCATION" -t "$HOME" git
 stow -d "$DOTFILE_LOCATION" -t "$HOME" xdg
+
+if [[ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]]; then
+  # Ensure vim plug is installed for neovim
+  sh -c 'curl -fLo  "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+fi
