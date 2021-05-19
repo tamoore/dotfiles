@@ -22,6 +22,9 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# Source fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -133,4 +136,11 @@ auth_1password() {
 # Attach a github token to the current session
 attach_gh_token() {
     export ${1:-GITHUB_TOKEN}="$(op list items | jq -r '.[] | select(.overview.title=="Github PAT") | .uuid' | xargs -I {} op get item {} | jq -r '.details.password')"
+}
+
+# fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find "$HOME/Projects" -name "${1}" -type d -print 2> /dev/null | head -n 1) &&
+  cd "$dir"
 }
