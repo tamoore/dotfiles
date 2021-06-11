@@ -119,8 +119,10 @@ if [ -d "$HOME/bin" ]; then
 fi
 
 if [[ -d "$HOME/.bash_it" ]]; then
-    # shellcheck source=/Users/toddmoore/.bash_it/bash_it.sh
-    . "$BASH_IT"/bash_it.sh
+    if [[ -n "$BASH_IT" ]]; then
+        # shellcheck source=/Users/toddmoore/.bash_it/bash_it.sh
+        . "$BASH_IT"/bash_it.sh
+    fi
 fi
 
 # output all the hotkeys for skhd
