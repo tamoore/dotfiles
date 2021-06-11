@@ -125,24 +125,60 @@ if [[ -d "$HOME/.bash_it" ]]; then
     fi
 fi
 
-# output all the hotkeys for skhd
+# Starts an ssh agent on login of shell. Ensures that if the agent is already
+# running that it does not open a second agent instance.
+function start_agent() {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    # shellcheck source=/dev/null
+    . "${SSH_ENV}" >/dev/null
+    /usr/bin/ssh-add
+}
+
+# Source SSH settings, if applicable
+if [ -f "${SSH_ENV}" ]; then
+    # shellcheck source=/dev/null
+    . "${SSH_ENV}" >/dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep "${SSH_AGENT_PID}" | grep ssh-agent$ >/dev/null || {
+        start_agent
+    }
+else
+    start_agent
+fi
+
+## output all the hotkeys for skhd
 pskhd() {
     grep "##" -A 2  "$HOME/.config/skhd/skhdrc" | sed '/^--$/d'
 }
 
-# Auth 1password session
+## Auth 1password session
 auth_1password() {
     eval $(op signin my)
 }
 
-# Attach a github token to the current session
+## Attach a github token to the current session
 attach_gh_token() {
     export ${1:-GITHUB_TOKEN}="$(op list items | jq -r '.[] | select(.overview.title=="Github PAT") | .uuid' | xargs -I {} op get item {} | jq -r '.details.password')"
 }
 
-# fd - cd to selected directory
+## fd - cd to selected directory
 fd() {
   local dir
   dir=$(find "$HOME/Projects" -name "${1}" -type d -print 2> /dev/null | head -n 1) &&
   cd "$dir"
+}
+
+## [K]ill [a]all [d]ocker [c]ontainers
+kadc() {
+    docker container ls -q | xargs -I {} docker container stop {}
+    docker container prune -f
+}
+
+## Output all the bashrc commands
+pcmds() {
+  echo -e "==> Bash Commands \n"
+  grep -A 1 "^##" "${BASH_SOURCE[${#BASH_SOURCE[@]}-1]}" | sed 's/{//'
 }
