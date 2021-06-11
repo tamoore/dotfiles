@@ -40,6 +40,11 @@ if [[ -f "$HOME/.bash_common" ]]; then
     . "$HOME/.bash_common"
 fi 
 
+# source the ssh agent startup script
+if [[ -f "$HOME/.agent.bash" ]]; then
+    . "$HOME/.agent.bash"
+fi 
+
 # Source bash git completions
 if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
     . "/usr/local/etc/profile.d/bash_completion.sh"
