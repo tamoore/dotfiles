@@ -179,6 +179,15 @@ kadc() {
 
 ## Output all the bashrc commands
 pcmds() {
-  echo -e "==> Bash Commands \n"
-  grep -A 1 "^##" "${BASH_SOURCE[${#BASH_SOURCE[@]}-1]}" | sed 's/{//'
+  echo -e "==> My Commands \n"
+  grep -A 1 "^##" "${BASH_SOURCE[${#BASH_SOURCE[@]}-1]}" | sed 's/{//' | colorize_output
+}
+
+# mostly just for pcmds
+colorize_output() {
+	while read -r line; do
+		echo "$line" |
+			sed ''/\#\#/s//"$(printf "\033[32m>\033[0m")"/'' |
+			sed ''/--/s///'' 
+	done
 }
