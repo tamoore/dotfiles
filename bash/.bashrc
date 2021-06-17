@@ -159,6 +159,17 @@ pcmds() {
   grep -A 1 "^##" "${BASH_SOURCE[${#BASH_SOURCE[@]}-1]}" | sed 's/{//' | colorize_output
 }
 
+## Reset Projects folder permissions
+rsperms() {
+    echo -e "==> Stopping all docker containers and removing them"
+    kadc
+
+    echo -e "==> Reseting $PROJECTS_DIR permissions"
+    if [[ -n $PROJECTS_DIR ]]; then
+        sudo chown -R "$USER:$USER" "$PROJECTS_DIR"
+    fi
+}
+
 # mostly just for pcmds
 colorize_output() {
 	while read -r line; do
